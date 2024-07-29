@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: hey
+  name: hey
+  namespace: default
+spec:
+  containers:
+  - command: ["sleep"]
+    args: ["36000"]
+    image: williamyeh/hey:latest
+    imagePullPolicy: Always
+    name: hey
+    stdin: true
+    stdinOnce: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: kind-worker
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
